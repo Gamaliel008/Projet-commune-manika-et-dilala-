@@ -3,173 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portail Mairie de Kolwezi - Accueil et Services</title>
+    <title>Mairie de Kolwezi - Portail Officiel (Maquette Pro)</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        /* Définition de la palette professionnelle */
+        :root {
+            --color-primary: #172554; /* Bleu Nuit Profond (dark blue-900) */
+            --color-accent: #3b82f6;  /* Bleu Clair Vif (blue-500) */
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* bg-gray-100 léger */
+            background-color: #f8fafc; /* bg-slate-50 très clair */
         }
-        /* Couleurs Thématiques */
-        .primary-color {
-            background-color: #1e40af; /* Bleu Institutionnel (blue-800) */
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
         }
-        .text-primary {
-            color: #2563eb; /* blue-600 */
+
+        /* Styles spécifiques pour le thème */
+        .primary-bg {
+            background-color: var(--color-primary);
         }
-        .border-primary {
-            border-color: #3b82f6; /* blue-500 */
+        .text-accent {
+            color: var(--color-accent);
         }
-        .dropdown-item-hover:hover {
-            background-color: #eff6ff; /* blue-50 */
-            color: #1e40af; /* blue-800 */
+        .border-accent {
+            border-color: var(--color-accent);
+        }
+        .hero-title {
+            letter-spacing: 0.05em;
+        }
+
+        /* Amélioration des cartes de service */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* shadow-md */
+            border-left: 5px solid var(--color-accent);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-xl */
+        }
+        
+        /* Carrousel */
+        .carousel-container {
+            height: 28rem; 
         }
         .dropdown-bg {
              background-color: #ffffff;
-             color: #1f2937; /* gray-800 */
         }
-        .card-shadow:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-            transform: translateY(-4px);
-        }
-        .transition-all {
-            transition: all 0.3s ease-in-out;
-        }
-        .carousel-container {
-            height: 24rem; /* Hauteur pour le carrousel */
+        .dropdown-item-hover:hover {
+            background-color: #eff6ff;
+            color: var(--color-primary);
         }
     </style>
     <script src="https://unpkg.com/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800">
 
-    <nav class="primary-color text-white shadow sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center py-4">
-            
-            <a href="index.html" class="flex items-center text-2xl font-extrabold space-x-2">
-                <i class="fa-solid fa-gavel text-white"></i>
-                <span>Mairie de Kolwezi</span>
-            </a>
-
-            <ul class="hidden lg:flex space-x-6 font-medium items-center">
+    <header>
+        <nav class="primary-bg text-white shadow-2xl sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 flex justify-between items-center py-4">
                 
-                <li><a href="index.html" class="flex items-center hover:text-sky-300 transition duration-150"><i class="fa-solid fa-house mr-1"></i> Accueil</a></li>
-                
-                <li><a href="a_propos.html" class="flex items-center hover:text-sky-300 transition duration-150"><i class="fa-solid fa-circle-info mr-1"></i> À Propos</a></li>
+                <a href="index.html" class="flex items-center text-3xl font-extrabold hero-title space-x-2">
+                    <i class="fa-solid fa-gavel text-white"></i>
+                    <span>KOLWEZI MAIRIE</span>
+                </a>
 
-                <li class="relative">
-                    <button data-dropdown-toggle="menuCommunes" class="flex items-center hover:text-sky-300 transition duration-150">
-                        <i class="fa-solid fa-city mr-1"></i> Communes <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                    </button>
-                    <div id="menuCommunes" class="hidden absolute z-10 mt-2 dropdown-bg shadow-xl rounded-lg w-40 ring-1 ring-black ring-opacity-5">
-                        <ul class="py-2 text-gray-800">
-                            <li><a href="commune_dilala.html" class="block px-4 py-2 hover:bg-red-100 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-red-600"></i> Dilala</a></li>
-                            <li><a href="commune_manika.html" class="block px-4 py-2 hover:bg-amber-100 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-amber-600"></i> Manika</a></li>
-                            <li><a href="commune_luilu.html" class="block px-4 py-2 hover:bg-green-100 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-green-600"></i> Luilu</a></li>
-                        </ul>
-                    </div>
-                </li>
+                <ul class="hidden lg:flex space-x-6 font-semibold items-center text-sm">
+                    
+                    <li><a href="index.html" class="flex items-center hover:text-accent transition duration-150 py-2"><i class="fa-solid fa-house mr-1"></i> Accueil</a></li>
+                    <li><a href="a_propos.html" class="flex items-center hover:text-accent transition duration-150 py-2"><i class="fa-solid fa-circle-info mr-1"></i> À Propos</a></li>
 
-                <li class="relative">
-                    <button data-dropdown-toggle="menuServices" class="flex items-center hover:text-sky-300 transition duration-150">
-                        <i class="fa-solid fa-list-check mr-1"></i> Services <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                    </button>
-                    <div id="menuServices" class="hidden absolute z-10 mt-2 dropdown-bg shadow-xl rounded-lg w-64 ring-1 ring-black ring-opacity-5 -translate-x-1/2">
-                        <ul class="py-2 text-gray-800 grid grid-cols-2 gap-1 text-sm">
-                            <li><a href="service_etat_civil.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-file-contract mr-2 text-primary"></i> État Civil</a></li>
-                            <li><a href="service_urbanisme.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-helmet-safety mr-2 text-green-600"></i> Urbanisme & Habitat</a></li>
-                            <li><a href="service_economie.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-store-alt mr-2 text-yellow-600"></i> Économie & Commerce</a></li>
-                            <li><a href="service_hygiene.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-trash-can mr-2 text-teal-600"></i> Hygiène & Env.</a></li>
-                            <li><a href="service_police.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-shield-halved mr-2 text-red-600"></i> Police Adm.</a></li>
-                            <li><a href="service_social.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-people-carry-box mr-2 text-purple-600"></i> Affaires sociales</a></li>
-                            <li><a href="service_finances.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-chart-pie mr-2 text-amber-600"></i> Finances</a></li>
-                            <li><a href="service_technique.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-wrench mr-2 text-sky-600"></i> Service Tech.</a></li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="relative">
+                        <button data-dropdown-toggle="menuCommunes" class="flex items-center hover:text-accent transition duration-150 py-2">
+                            <i class="fa-solid fa-city mr-1"></i> Communes <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div id="menuCommunes" class="hidden absolute z-10 mt-2 dropdown-bg shadow-2xl rounded-lg w-40 ring-1 ring-gray-200">
+                            <ul class="py-2 text-gray-800 text-sm">
+                                <li><a href="commune_dilala.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-red-600"></i> Dilala</a></li>
+                                <li><a href="commune_manika.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-amber-600"></i> Manika</a></li>
+                                <li><a href="commune_luilu.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-map-pin mr-2 text-green-600"></i> Luilu</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-                <li><a href="actualites.html" class="flex items-center hover:text-sky-300 transition duration-150"><i class="fa-solid fa-newspaper mr-1"></i> Actualités</a></li>
+                    <li class="relative">
+                        <button data-dropdown-toggle="menuServices" class="flex items-center hover:text-accent transition duration-150 py-2">
+                            <i class="fa-solid fa-list-check mr-1"></i> Services <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div id="menuServices" class="hidden absolute z-10 mt-2 dropdown-bg shadow-2xl rounded-lg w-72 ring-1 ring-gray-200 -translate-x-1/2">
+                            <ul class="py-2 text-gray-800 grid grid-cols-2 gap-1 text-xs">
+                                <li><a href="service_etat_civil.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-file-contract mr-2 text-primary"></i> État Civil</a></li>
+                                <li><a href="service_urbanisme.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-helmet-safety mr-2 text-green-600"></i> Urbanisme & Habitat</a></li>
+                                <li><a href="service_economie.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-store-alt mr-2 text-yellow-600"></i> Économie & Commerce</a></li>
+                                <li><a href="service_hygiene.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-trash-can mr-2 text-teal-600"></i> Hygiène & Env.</a></li>
+                                <li><a href="service_police.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-shield-halved mr-2 text-red-600"></i> Police Adm.</a></li>
+                                <li><a href="service_social.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-people-carry-box mr-2 text-purple-600"></i> Affaires sociales</a></li>
+                                <li><a href="service_finances.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-chart-pie mr-2 text-amber-600"></i> Finances</a></li>
+                                <li><a href="service_technique.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-wrench mr-2 text-sky-600"></i> Service Tech.</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-                <li class="relative">
-                    <button data-dropdown-toggle="menuProjets" class="flex items-center hover:text-sky-300 transition duration-150">
-                        <i class="fa-solid fa-road mr-1"></i> Projets <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                    </button>
-                    <div id="menuProjets" class="hidden absolute z-10 mt-2 dropdown-bg shadow-xl rounded-lg w-72 ring-1 ring-black ring-opacity-5">
-                        <ul class="py-2 text-gray-800">
-                            <li><a href="projets_manika.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-city mr-2 text-amber-600"></i> Projets de la Commune de Manika</a></li>
-                            <li><a href="projets_globaux.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-globe mr-2 text-primary"></i> Projets Urbains Globaux</a></li>
-                        </ul>
-                    </div>
-                </li>
+                    <li><a href="actualites.html" class="flex items-center hover:text-accent transition duration-150 py-2"><i class="fa-solid fa-newspaper mr-1"></i> Actualités</a></li>
 
-                <li><a href="contact.html" class="flex items-center font-bold bg-blue-700 p-2 rounded-lg hover:bg-blue-600 transition duration-150"><i class="fa-solid fa-envelope mr-1"></i> Contact</a></li>
-            </ul>
+                    <li class="relative">
+                        <button data-dropdown-toggle="menuProjets" class="flex items-center hover:text-accent transition duration-150 py-2">
+                            <i class="fa-solid fa-road mr-1"></i> Projets <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div id="menuProjets" class="hidden absolute z-10 mt-2 dropdown-bg shadow-2xl rounded-lg w-72 ring-1 ring-gray-200">
+                            <ul class="py-2 text-gray-800 text-sm">
+                                <li><a href="projets_manika.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-city mr-2 text-amber-600"></i> Projets de la Commune de Manika</a></li>
+                                <li><a href="projets_globaux.html" class="block px-4 py-2 dropdown-item-hover"><i class="fa-solid fa-globe mr-2 text-primary"></i> Projets Urbains Globaux</a></li>
+                            </ul>
+                        </div>
+                    </li>
 
-            <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-sky-300 rounded-lg lg:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-300" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Ouvrir le menu principal</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
-            </button>
-        </div>
-    </nav>
+                    <li><a href="contact.html" class="flex items-center font-bold bg-accent/90 text-white p-2 rounded-lg hover:bg-accent transition duration-150 shadow-md"><i class="fa-solid fa-envelope mr-1"></i> Contact</a></li>
+                </ul>
 
-    <main class="max-w-7xl mx-auto py-12 px-6 space-y-16">
+                <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-accent rounded-lg lg:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-300" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Ouvrir le menu principal</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-12 px-6 space-y-20">
         
-        <section id="accueil" class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-primary grid lg:grid-cols-2 gap-8">
+        <section id="accueil" class="bg-white p-8 lg:p-12 rounded-2xl shadow-2xl border-t-8 border-accent grid lg:grid-cols-2 gap-10 items-center">
             
             <div>
-                <h1 class="text-4xl font-extrabold text-gray-900 mb-4 flex items-center">
-                    <i class="fa-solid fa-city text-primary mr-3"></i> Bienvenue à la Mairie Communale
+                <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 hero-title leading-tight">
+                    <span class="text-accent">BIENVENUE</span> À LA MAIRIE DE KOLWEZI
                 </h1>
-                <p class="text-lg text-gray-600 border-l-4 border-blue-400 pl-4 py-2 italic mb-4">
-                    "Notre mission est de servir le citoyen, garantir l'ordre urbain et promouvoir le développement social et économique de notre commune."
+                <blockquote class="text-xl text-gray-700 border-l-4 border-blue-400 pl-4 py-3 italic mb-6 bg-blue-50/50 rounded-r-lg">
+                    "Notre mission est de **servir le citoyen**, garantir l'ordre urbain et promouvoir le développement social et économique de notre commune."
+                </blockquote>
+                <p class="mt-4 text-lg text-gray-700">
+                    Explorez ci-dessous les **huit piliers** de notre administration, conçus pour vous apporter des services de proximité efficaces et transparents au quotidien.
                 </p>
-                <p class="mt-4 text-gray-700">
-                    Explorez ci-dessous les **huit piliers** de notre administration, conçus pour vous apporter des services de proximité efficaces et transparents.
-                </p>
-                <a href="#services" class="mt-6 inline-block bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
-                    Découvrir les Services <i class="fa-solid fa-arrow-down ml-2"></i>
+                <a href="#services" class="mt-8 inline-block primary-bg text-white font-bold py-3 px-8 rounded-full hover:bg-blue-900 transition duration-300 shadow-lg transform hover:scale-[1.02]">
+                    Découvrir nos Services Clés <i class="fa-solid fa-arrow-down ml-2"></i>
                 </a>
             </div>
 
-            <div id="carousel-example" class="relative w-full carousel-container" data-carousel="slide" data-carousel-interval="5000">
-                <div class="relative h-full overflow-hidden rounded-lg shadow-xl">
+            <div id="carousel-example" class="relative w-full carousel-container rounded-xl overflow-hidden shadow-2xl" data-carousel="slide" data-carousel-interval="5000">
+                <div class="relative h-full">
                     
                     <div class="duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://source.unsplash.com/random/800x600/?government,building,africa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e40af/ffffff?text=MAIRIE+COMMUNALE'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Bâtiment principal de la Mairie">
-                        <div class="absolute bottom-0 w-full p-4 bg-black bg-opacity-50 text-white text-center font-bold">Le Bâtiment de l'Administration</div>
+                        <img src="https://source.unsplash.com/random/800x600/?government,building,africa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/172554/ffffff?text=MAIRIE+COMMUNALE'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Bâtiment principal de la Mairie">
+                        <div class="absolute bottom-0 w-full p-4 bg-black/60 text-white text-center font-semibold text-sm">Le Bâtiment de l'Administration</div>
                     </div>
                     
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://source.unsplash.com/random/800x600/?road,construction,city" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e40af/ffffff?text=TRAVAUX+PUBLICS'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Projet de voirie ou d'infrastructure">
-                        <div class="absolute bottom-0 w-full p-4 bg-black bg-opacity-50 text-white text-center font-bold">Projets d'Infrastructures en cours</div>
+                        <img src="https://source.unsplash.com/random/800x600/?road,construction,city" onerror="this.onerror=null;this.src='https://placehold.co/800x600/172554/ffffff?text=TRAVAUX+PUBLICS'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Projet de voirie ou d'infrastructure">
+                        <div class="absolute bottom-0 w-full p-4 bg-black/60 text-white text-center font-semibold text-sm">Projets d'Infrastructures en cours</div>
                     </div>
                     
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://source.unsplash.com/random/800x600/?education,community,africa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1e40af/ffffff?text=AFFAIRES+SOCIALES'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Événement communautaire ou scolaire">
-                        <div class="absolute bottom-0 w-full p-4 bg-black bg-opacity-50 text-white text-center font-bold">Action Sociale et Éducation</div>
+                        <img src="https://source.unsplash.com/random/800x600/?education,community,africa" onerror="this.onerror=null;this.src='https://placehold.co/800x600/172554/ffffff?text=AFFAIRES+SOCIALES'" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" alt="Événement communautaire ou scolaire">
+                        <div class="absolute bottom-0 w-full p-4 bg-black/60 text-white text-center font-semibold text-sm">Action Sociale et Éducation</div>
                     </div>
                     
                 </div>
                 <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-primary" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-primary" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white ring-2 ring-primary" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-2.5 h-2.5 rounded-full bg-white opacity-70 hover:opacity-100 transition" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-2.5 h-2.5 rounded-full bg-white opacity-70 hover:opacity-100 transition" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-2.5 h-2.5 rounded-full bg-white opacity-70 hover:opacity-100 transition" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
                 </div>
             </div>
         </section>
 
-        <hr class="border-gray-300 my-12">
-
-        <section id="services" class="p-6 bg-white rounded-xl shadow-2xl border-t-4 border-blue-600">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-10 text-center flex items-center justify-center">
-                <i class="fa-solid fa-gear text-primary mr-3"></i> Nos 8 Piliers de l'Administration Publique
+        <section id="services" class="p-8 bg-white rounded-2xl shadow-2xl border-t-4 border-gray-200">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-12 text-center hero-title border-b-2 border-accent/50 pb-3 inline-block mx-auto flex items-center justify-center">
+                <i class="fa-solid fa-list-ol text-accent mr-3"></i> LES 8 PILIERS DE L'ADMINISTRATION PUBLIQUE
             </h2>
             
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-primary">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-file-contract text-3xl text-primary mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">1. État Civil</h3>
@@ -177,12 +196,12 @@
                     <p class="text-gray-600 text-sm italic mb-4">Le cœur administratif de la commune.</p>
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Délivrance d’actes (naissance, mariage, décès)</li>
-                        <li>Déclarations de naissances tardives</li>
                         <li>Légalisation des documents administratifs</li>
                     </ul>
+                    <a href="service_etat_civil.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
                 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-green-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-helmet-safety text-3xl text-green-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">2. Urbanisme et Habitat</h3>
@@ -191,11 +210,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Délivrance des permis de construire/d’habiter</li>
                         <li>Contrôle et inspection des chantiers</li>
-                        <li>Gestion des alignements et voiries</li>
                     </ul>
+                    <a href="service_urbanisme.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
                 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-yellow-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-store-alt text-3xl text-yellow-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">3. Économie et Commerce</h3>
@@ -204,11 +223,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Enregistrement des établissements commerciaux</li>
                         <li>Attribution des licences d’exploitation</li>
-                        <li>Gestion des taxes locales (étals, publicité)</li>
                     </ul>
+                    <a href="service_economie.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
                 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-teal-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-trash-can text-3xl text-teal-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">4. Hygiène et Environnement</h3>
@@ -217,11 +236,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Gestion de la salubrité publique</li>
                         <li>Lutte contre l’insalubrité et les nuisances</li>
-                        <li>Suivi des déchets et assainissement</li>
                     </ul>
+                    <a href="service_hygiene.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-red-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-shield-halved text-3xl text-red-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">5. Police administrative</h3>
@@ -230,11 +249,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Application des arrêtés municipaux</li>
                         <li>Contrôle des constructions illégales</li>
-                        <li>Coordination pour la sécurité locale</li>
                     </ul>
+                    <a href="service_police.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-purple-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-people-carry-box text-3xl text-purple-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">6. Affaires sociales</h3>
@@ -243,11 +262,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Assistance aux personnes vulnérables</li>
                         <li>Soutien aux associations locales</li>
-                        <li>Organisation d’événements culturels</li>
                     </ul>
+                    <a href="service_social.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-amber-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-chart-pie text-3xl text-amber-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">7. Finances communales</h3>
@@ -256,11 +275,11 @@
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Perception des taxes et redevances</li>
                         <li>Élaboration du budget de la commune</li>
-                        <li>Gestion du patrimoine communal</li>
                     </ul>
+                    <a href="service_finances.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
 
-                <div class="p-6 bg-gray-50 rounded-lg shadow-lg transition-all card-shadow border-l-4 border-sky-600">
+                <div class="p-6 bg-gray-50 rounded-xl service-card">
                     <div class="flex items-center mb-3">
                         <i class="fa-solid fa-wrench text-3xl text-sky-600 mr-3"></i>
                         <h3 class="text-xl font-bold text-gray-900">8. Service Technique</h3>
@@ -268,9 +287,9 @@
                     <p class="text-gray-600 text-sm italic mb-4">Ceux qui font que la ville "fonctionne".</p>
                     <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 ml-4">
                         <li>Entretien des routes et ponts</li>
-                        <li>Éclairage public et eau</li>
-                        <li>Suivi des travaux publics locaux</li>
+                        <li>Éclairage public et gestion des équipements</li>
                     </ul>
+                    <a href="service_technique.html" class="text-accent hover:underline text-xs mt-3 block font-semibold">En savoir plus →</a>
                 </div>
 
             </div>
@@ -278,51 +297,57 @@
 
     </main>
     
-    <footer class="py-10 mt-16 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 text-sm text-gray-400">
-            <div class="grid md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
+    <footer class="py-12 mt-16 primary-bg">
+        <div class="max-w-7xl mx-auto px-6 text-sm text-gray-400">
+            <div class="grid md:grid-cols-4 gap-10 mb-8 text-center md:text-left">
                 
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-3 flex items-center justify-center md:justify-start">
-                        <i class="fa-solid fa-gavel mr-2 text-primary"></i> Mairie Communale
+                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center justify-center md:justify-start hero-title">
+                        <i class="fa-solid fa-gavel mr-2 text-accent"></i> KOLWEZI
                     </h3>
-                    <p class="text-gray-500 mb-2">
-                        <i class="fa-solid fa-location-dot mr-2 text-primary"></i> Avenue Principale, N°XX, Kolwezi
+                    <p class="text-gray-400 mb-2">
+                        <i class="fa-solid fa-location-dot mr-2 text-accent"></i> Avenue Principale, N°XX, Kolwezi, Lualaba
                     </p>
-                    <p class="text-gray-500">
-                        <i class="fa-solid fa-envelope mr-2 text-primary"></i> contact@mairiekolwezi.cd
+                    <p class="text-gray-400 mb-4">
+                        <i class="fa-solid fa-envelope mr-2 text-accent"></i> info@mairiekolwezi.cd
                     </p>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition"><i class="fab fa-linkedin-in text-lg"></i></a>
+                    </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold text-white mb-3">Navigation</h4>
+                    <h4 class="text-lg font-semibold text-white mb-4">Navigation</h4>
                     <ul class="space-y-2">
-                        <li><a href="a_propos.html" class="hover:text-primary transition">À Propos (Histoire, Orga)</a></li>
-                        <li><a href="#services" class="hover:text-primary transition">Services Clés</a></li>
-                        <li><a href="actualites.html" class="hover:text-primary transition">Actualités & Presse</a></li>
+                        <li><a href="a_propos.html" class="hover:text-accent transition">Histoire & Organisation</a></li>
+                        <li><a href="#services" class="hover:text-accent transition">Portail des Services</a></li>
+                        <li><a href="actualites.html" class="hover:text-accent transition">Actualités & Presse</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-semibold text-white mb-3">Services Rapides</h4>
+                    <h4 class="text-lg font-semibold text-white mb-4">Services Directs</h4>
                     <ul class="space-y-2">
-                        <li><a href="service_urbanisme.html" class="hover:text-primary transition">Permis de Construire</a></li>
-                        <li><a href="service_etat_civil.html" class="hover:text-primary transition">Acte de Naissance</a></li>
-                        <li><a href="service_economie.html" class="hover:text-primary transition">Licence Commerciale</a></li>
+                        <li><a href="service_urbanisme.html" class="hover:text-accent transition">Permis de Construire</a></li>
+                        <li><a href="service_etat_civil.html" class="hover:text-accent transition">Actes d'État Civil</a></li>
+                        <li><a href="service_economie.html" class="hover:text-accent transition">Demande de Licence</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-semibold text-white mb-3">Urgence</h4>
-                    <p class="text-2xl font-extrabold text-red-500">1XX</p>
-                    <p class="text-gray-500">Police Administrative / Sécurité</p>
+                    <h4 class="text-lg font-semibold text-white mb-4">Urgence & Sécurité</h4>
+                    <p class="text-3xl font-extrabold text-red-500 mb-2">1XX</p>
+                    <p class="text-gray-500 mb-4">Police Administrative / Services d'urgence</p>
+                    <a href="#" class="text-accent hover:underline text-sm font-semibold">Transparence & Rapports <i class="fa-solid fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
 
-            <hr class="border-gray-700 my-6">
+            <hr class="border-gray-700 my-8">
 
-            <div class="text-center">
-                <p>© 2024 Mairie de Kolwezi. Tous droits réservés.</p>
+            <div class="text-center text-gray-500 text-xs">
+                <p>© 2024 Mairie de Kolwezi. Tous droits réservés. | Conception pour Maquette de Présentation.</p>
             </div>
         </div>
     </footer>
