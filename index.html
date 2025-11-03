@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ville de Kolwezi — Portail Officiel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Petite personnalisation hors Tailwind */
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .hero-bg { background: linear-gradient(90deg, rgba(14,165,233,0.07), rgba(99,102,241,0.05)); }
+    .glass { backdrop-filter: blur(6px); background: rgba(255,255,255,0.55); }
+  </style>
+</head>
+<body class="antialiased text-gray-800">
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 shadow-sm bg-white/60 glass">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <a href="#home" class="flex items-center gap-3">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' rx='6' fill='%23996b00'/><text x='50%' y='55%' font-size='18' font-family='Arial' fill='white' text-anchor='middle'>KZ</text></svg>" alt="logo" class="w-10 h-10 rounded-md shadow-sm"/>
+            <div class="hidden sm:block">
+              <div class="text-sm font-semibold">Mairie de Kolwezi</div>
+              <div class="text-xs text-gray-500">Portail institutionnel</div>
+            </div>
+          </a>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#home" class="hover:text-indigo-600">Accueil</a>
+          <a href="#a-propos" class="hover:text-indigo-600">À propos</a>
+          <a href="#communes" class="hover:text-indigo-600">Communes</a>
+          <a href="#services" class="hover:text-indigo-600">Services</a>
+          <a href="#galerie" class="hover:text-indigo-600">Galerie</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#connexion" class="text-sm px-3 py-1.5 border border-indigo-600 rounded-md bg-indigo-50 hover:bg-indigo-100">Espace Admin</a>
+          <button id="btnMenu" class="md:hidden p-2 rounded-md focus:outline-none" aria-label="Menu">
+            <svg id="iconMenu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="#home">Accueil</a>
+        <a href="#a-propos">À propos</a>
+        <a href="#communes">Communes</a>
+        <a href="#services">Services</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-24">
+    <!-- HERO -->
+    <section id="home" class="hero-bg py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">Kolwezi — Service public, services transparents</h1>
+            <p class="mt-4 text-gray-600">Un portail pour rapprocher la mairie, les citoyens et les acteurs économiques. Infos, démarches, actualités et formulaires — tout au même endroit.</p>
+
+            <div class="mt-6 flex gap-3">
+              <a href="#communes" class="px-4 py-2 rounded-md bg-indigo-600 text-white text-sm font-semibold hover:opacity-95">Découvrir les communes</a>
+              <a href="#services" class="px-4 py-2 rounded-md border border-gray-300 text-sm hover:bg-gray-50">Nos services</a>
+            </div>
+
+            <div class="mt-6 text-xs text-gray-500">Dernière mise à jour : <!-- MANAGE THIS DATE --> 03 novembre 2025</div>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden shadow-lg bg-white p-6">
+            <img src="https://source.unsplash.com/collection/190727/800x600" alt="Kolwezi city" class="w-full h-52 object-cover rounded-md" />
+            <div class="mt-4 grid grid-cols-2 gap-4">
+              <div class="p-3 border rounded-md">
+                <div class="text-sm font-semibold">Population estimée</div>
+                <div class="text-xl">~ 500 000</div>
+              </div>
+              <div class="p-3 border rounded-md">
+                <div class="text-sm font-semibold">Économie</div>
+                <div class="text-xl">Mine & Services</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="a-propos" class="py-12">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl font-bold">Qui sommes-nous ?</h2>
+        <p class="mt-3 text-gray-600">Portail officiel de la mairie de Kolwezi. Ce site vise à faciliter l'accès aux informations administratives, aux services en ligne et aux actualités municipales.</p>
+      </div>
+    </section>
+
+    <!-- COMMUNES -->
+    <section id="communes" class="py-12 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Les communes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Dilala -->
+          <article class="p-6 bg-white rounded-2xl shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold">Commune de Dilala</h3>
+                <p class="mt-2 text-gray-600">Centre historique et administratif. Commerces, services publics et quartiers résidentiels.</p>
+
+                <ul class="mt-3 text-sm text-gray-600 list-disc list-inside">
+                  <li>Quartiers : Kasulo, Kapata, Jadotville, Golf</li>
+                  <li>Services : Urbanisme, Etat civil, Licence commerciale</li>
+                </ul>
+
+                <div class="mt-4">
+                  <a href="#" class="text-indigo-600 text-sm font-medium">Voir les démarches</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Manika -->
+          <article class="p-6 bg-white rounded-2xl shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold">Commune de Manika</h3>
+                <p class="mt-2 text-gray-600">Zone en expansion, forte activité industrielle et minière, quartiers en développement.</p>
+
+                <ul class="mt-3 text-sm text-gray-600 list-disc list-inside">
+                  <li>Zones industrielles et minières</li>
+                  <li>Services : Inspection des installations, Permis d'exploitation</li>
+                </ul>
+
+                <div class="mt-4">
+                  <a href="#" class="text-indigo-600 text-sm font-medium">Voir les démarches</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Services en ligne</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-5 bg-white rounded-xl shadow-sm">
+            <div class="text-sm font-semibold">Etat civil</div>
+            <p class="mt-2 text-sm text-gray-600">Demande d'extrait de naissance, mariage, décès.</p>
+            <div class="mt-4">
+              <a href="#" class="text-indigo-600 text-sm">Formulaire en ligne →</a>
+            </div>
+          </div>
+
+          <div class="p-5 bg-white rounded-xl shadow-sm">
+            <div class="text-sm font-semibold">Urbanisme</div>
+            <p class="mt-2 text-sm text-gray-600">Permis de construire, consultations des plans.</p>
+            <div class="mt-4">
+              <a href="#" class="text-indigo-600 text-sm">Soumettre une demande →</a>
+            </div>
+          </div>
+
+          <div class="p-5 bg-white rounded-xl shadow-sm">
+            <div class="text-sm font-semibold">Annonces & Marchés</div>
+            <p class="mt-2 text-sm text-gray-600">Appels d'offres, avis publics, marchés publics.</p>
+            <div class="mt-4">
+              <a href="#" class="text-indigo-600 text-sm">Consulter →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie" class="py-12 bg-gray-100">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Galerie</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <img src="https://source.unsplash.com/featured/?city,africa" alt="kolwezi" class="w-full h-40 object-cover rounded-md shadow-sm"/>
+          <img src="https://source.unsplash.com/featured/?mining" alt="mine" class="w-full h-40 object-cover rounded-md shadow-sm"/>
+          <img src="https://source.unsplash.com/featured/?market" alt="market" class="w-full h-40 object-cover rounded-md shadow-sm"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-4">Contactez la mairie</h2>
+        <p class="text-gray-600 mb-4">Questions, demandes de rendez-vous, signalements — envoyez-nous un message et nous vous répondrons.</p>
+
+        <form id="contactForm" class="grid grid-cols-1 gap-4">
+          <input required name="nom" placeholder="Nom complet" class="p-3 border rounded-md" />
+          <input required name="email" type="email" placeholder="Email" class="p-3 border rounded-md" />
+          <textarea required name="message" placeholder="Votre message" rows="5" class="p-3 border rounded-md"></textarea>
+          <div class="flex items-center gap-3">
+            <button type="submit" class="px-4 py-2 rounded-md bg-indigo-600 text-white">Envoyer</button>
+            <button type="reset" class="px-4 py-2 rounded-md border">Réinitialiser</button>
+          </div>
+          <div id="formMsg" class="text-sm text-green-600 hidden">Message envoyé — merci.</div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONNEXION (placeholder) -->
+    <section id="connexion" class="py-12 bg-gray-50">
+      <div class="max-w-md mx-auto px-4">
+        <h3 class="text-xl font-semibold mb-4">Espace Admin (prototype)</h3>
+        <p class="text-sm text-gray-600 mb-3">Cette zone est prévue pour l'authentification des agents municipaux et la gestion des contenus.</p>
+        <form onsubmit="event.preventDefault();alert('Prototype : intégrer un système d\'authentification (Firebase/Auth, Django, etc.)');">
+          <input placeholder="Identifiant" class="w-full p-3 border rounded-md mb-3" required />
+          <input placeholder="Mot de passe" type="password" class="w-full p-3 border rounded-md mb-3" required />
+          <div class="flex gap-3">
+            <button class="px-4 py-2 rounded-md bg-indigo-600 text-white">Se connecter</button>
+            <a class="px-4 py-2 rounded-md border" href="#">Mot de passe oublié</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="py-8 border-t mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-600">
+        © Mairie de Kolwezi — Tous droits réservés • Conçu comme prototype
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('btnMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let open = false;
+    btn?.addEventListener('click', () => {
+      open = !open;
+      mobileMenu.classList.toggle('hidden', !open);
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href && href.length>1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Simple contact form behaviour (client-side only)
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // TODO: remplacer par envoi réel (Firebase / backend)
+      form.reset();
+      formMsg.classList.remove('hidden');
+      setTimeout(() => formMsg.classList.add('hidden'), 4500);
+    });
+  </script>
+</body>
+</html>
