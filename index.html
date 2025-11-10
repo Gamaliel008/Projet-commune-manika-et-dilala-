@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lualaba Vision - Votre source d'information premium pour la RDC et le Lualaba. Actualités exclusives, analyses économiques et politiques approfondies.">
     <meta name="keywords" content="RDC, Lualaba, actualités, mines, économie, politique, agriculture, développement, cobalt, investissement">
-    <title>Mwangeji Média | Média Premium - Actualités RDC & Économie</title>
+    <title>Lualaba Vision | Média Premium - Actualités RDC & Économie</title>
     
     <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +17,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- AOS Library pour les animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -42,6 +39,7 @@
             color: #334155;
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .hero-gradient {
@@ -141,15 +139,6 @@
             animation-delay: 2s;
         }
         
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: #10b981;
-            top: 60%;
-            left: 15%;
-            animation-delay: 4s;
-        }
-        
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
@@ -221,8 +210,10 @@
         
         .category-politics { background: #dbeafe; color: #1e40af; }
         .category-economy { background: #fef3c7; color: #92400e; }
-        .category-culture { background: #dcfce7; color: #166534; }
-        .category-sports { background: #fce7f3; color: #9d174d; }
+        .category-agriculture { background: #dcfce7; color: #166534; }
+        .category-society { background: #fce7f3; color: #9d174d; }
+        .category-culture { background: #ddd6fe; color: #5b21b6; }
+        .category-sports { background: #fef3c7; color: #92400e; }
         
         .testimonial-card {
             background: white;
@@ -551,11 +542,6 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         /* Animations pour les éléments au scroll */
         .fade-in {
             opacity: 0;
@@ -568,37 +554,76 @@
             transform: translateY(0);
         }
 
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
         }
 
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s ease;
+        .rubrique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .zoom-in.visible {
-            opacity: 1;
-            transform: scale(1);
+        .rubrique-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .rubrique-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .rubrique-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .rubrique-card:hover .rubrique-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
         @media (max-width: 768px) {
@@ -649,21 +674,20 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center space-x-3 group">
                     <div class="w-12 h-12 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
-                        <span class="text-white font-bold text-xl">MM</span>
+                        <span class="text-white font-bold text-xl">LV</span>
                     </div>
                     <div class="transition-all duration-300 group-hover:translate-x-1">
-                        <span class="text-2xl font-extrabold text-indigo-700">Mwangeji</span>
-                        <span class="text-2xl font-light text-gray-800">Média</span>
+                        <span class="text-2xl font-extrabold text-indigo-700">Lualaba</span>
+                        <span class="text-2xl font-light text-gray-800">Vision</span>
                     </div>
                 </a>
 
                 <!-- Menu Principal (Desktop) -->
                 <nav class="hidden lg:flex items-center space-x-1">
                     <a href="#accueil" class="nav-link text-gray-700 hover:text-indigo-700">Accueil</a>
-                    <a href="#actualites" class="nav-link text-gray-700 hover:text-indigo-700">Actualités</a>
-                    <a href="#economie" class="nav-link text-gray-700 hover:text-indigo-700">Économie</a>
-                    <a href="#analyses" class="nav-link text-gray-700 hover:text-indigo-700">Analyses</a>
+                    <a href="#rubriques" class="nav-link text-gray-700 hover:text-indigo-700">Rubriques</a>
                     <a href="#apropos" class="nav-link text-gray-700 hover:text-indigo-700">À Propos</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-indigo-700">Services</a>
                     <a href="#contact" class="btn-primary ml-4">Contact</a>
                 </nav>
 
@@ -680,10 +704,9 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 py-4 transition-all duration-300">
             <div class="px-4 space-y-3">
                 <a href="#accueil" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Accueil</a>
-                <a href="#actualites" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Actualités</a>
-                <a href="#economie" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Économie</a>
-                <a href="#analyses" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Analyses</a>
+                <a href="#rubriques" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Rubriques</a>
                 <a href="#apropos" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">À Propos</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-indigo-700 font-medium transition-all duration-300 hover:translate-x-2">Services</a>
                 <a href="#contact" class="block py-2 btn-primary text-center mt-4">Contact</a>
             </div>
         </div>
@@ -693,7 +716,6 @@
     <section id="accueil" class="hero-gradient text-white py-20 relative overflow-hidden">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="carousel-container">
@@ -708,7 +730,7 @@
                                 Décryptage exclusif, analyses approfondies et reportages terrain sur l'économie, la politique et le développement de la région la plus stratégique de la RDC.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="#abonnement" class="btn-secondary text-center">S'abonner à notre édition premium</a>
+                                <a href="#rubriques" class="btn-secondary text-center">Explorer nos rubriques</a>
                                 <a href="#actualites" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300 shadow-lg">Lire les actualités</a>
                             </div>
                         </div>
@@ -754,7 +776,7 @@
                                 Analyses exclusives sur les enjeux miniers, les investissements étrangers et l'impact sur le développement local du Lualaba.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="#analyses" class="btn-secondary text-center">Lire nos analyses</a>
+                                <a href="#economie" class="btn-secondary text-center">Lire nos analyses</a>
                                 <a href="#contact" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300 shadow-lg">Nous contacter</a>
                             </div>
                         </div>
@@ -789,52 +811,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
-                <div class="carousel-slide">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div class="fade-in">
-                            <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                                Le développement <span class="text-yellow-300">durable</span> au cœur
-                            </h1>
-                            <p class="text-xl mb-8 opacity-90">
-                                Reportages exclusifs sur les initiatives de développement durable, la protection de l'environnement et les projets sociaux dans le Lualaba.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="#actualites" class="btn-secondary text-center">Voir nos reportages</a>
-                                <a href="#apropos" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300 shadow-lg">Notre mission</a>
-                            </div>
-                        </div>
-                        <div class="relative zoom-in">
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-xl">
-                                <h3 class="text-2xl font-bold mb-4">Initiatives locales</h3>
-                                <div class="space-y-4">
-                                    <div class="flex items-start space-x-3 transition-all duration-300 hover:translate-x-2">
-                                        <div class="bg-green-500 text-white font-bold text-sm px-2 py-1 rounded mt-1 shadow-md">ENVIRONNEMENT</div>
-                                        <div>
-                                            <h4 class="font-semibold">Reforestation dans le Haut-Katanga</h4>
-                                            <p class="text-sm opacity-80 mt-1">10.000 arbres plantés cette année</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start space-x-3 transition-all duration-300 hover:translate-x-2">
-                                        <div class="bg-teal-500 text-white font-bold text-sm px-2 py-1 rounded mt-1 shadow-md">SOCIAL</div>
-                                        <div>
-                                            <h4 class="font-semibold">Nouveaux centres de formation professionnelle</h4>
-                                            <p class="text-sm opacity-80 mt-1">500 jeunes formés en 2023</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start space-x-3 transition-all duration-300 hover:translate-x-2">
-                                        <div class="bg-indigo-500 text-white font-bold text-sm px-2 py-1 rounded mt-1 shadow-md">INNOVATION</div>
-                                        <div>
-                                            <h4 class="font-semibold">Startups technologiques émergentes</h4>
-                                            <p class="text-sm opacity-80 mt-1">Écosystème en pleine croissance</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Flèches de navigation -->
                 <button class="carousel-arrow prev">
                     <i class="fas fa-chevron-left"></i>
@@ -847,60 +823,143 @@
                 <div class="carousel-dots">
                     <span class="carousel-dot active" data-slide="0"></span>
                     <span class="carousel-dot" data-slide="1"></span>
-                    <span class="carousel-dot" data-slide="2"></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Statistiques -->
+    <!-- Section Éditorial du Jour -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="stat-card fade-in">
-                    <div class="stat-number">15K+</div>
-                    <p class="text-gray-600">Lecteurs mensuels</p>
-                    <i class="fas fa-users text-indigo-200 text-2xl mt-4"></i>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">250+</div>
-                    <p class="text-gray-600">Articles publiés</p>
-                    <i class="fas fa-newspaper text-indigo-200 text-2xl mt-4"></i>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">98%</div>
-                    <p class="text-gray-600">Satisfaction lecteurs</p>
-                    <i class="fas fa-star text-indigo-200 text-2xl mt-4"></i>
-                </div>
-                <div class="stat-card fade-in">
-                    <div class="stat-number">12</div>
-                    <p class="text-gray-600">Journalistes experts</p>
-                    <i class="fas fa-user-tie text-indigo-200 text-2xl mt-4"></i>
+            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-8 shadow-lg">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-indigo-600 text-white p-4 rounded-xl">
+                        <i class="fas fa-feather-alt text-2xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Éditorial du Jour</h2>
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-3">Le Lualaba à l'aube d'une nouvelle ère économique</h3>
+                        <p class="text-gray-600 mb-4">
+                            Alors que la demande mondiale en cobalt continue de croître, le Lualaba se trouve à un carrefour décisif de son développement. 
+                            Comment transformer cette manne minière en opportunités durables pour les populations locales ? Notre rédacteur en chef 
+                            analyse les défis et perspectives de la province la plus stratégique de la RDC.
+                        </p>
+                        <a href="#" class="text-indigo-600 font-medium flex items-center group">
+                            Lire l'éditorial complet
+                            <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Articles à la Une -->
-    <section id="actualites" class="py-16 bg-gray-50">
+    <!-- Section Rubriques Thématiques -->
+    <section id="rubriques" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title text-3xl font-bold text-gray-800">À la Une</h2>
+            <h2 class="section-title text-3xl font-bold text-gray-800">Rubriques Thématiques</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mb-12">Explorez nos différentes rubriques couvrant tous les aspects de la vie au Lualaba et en RDC.</p>
+            
+            <div class="rubrique-grid">
+                <!-- Politique -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Politique RDC / Lualaba</h3>
+                    <p class="text-gray-600 mb-4">Analyses et reportages sur la vie politique nationale et provinciale, décryptage des enjeux institutionnels.</p>
+                    <a href="#politique" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Mines & Économie -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Mines & Économie</h3>
+                    <p class="text-gray-600 mb-4">Actualités du secteur minier, investissements, analyses économiques et perspectives de développement.</p>
+                    <a href="#mines" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Agriculture & Développement -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Agriculture & Développement</h3>
+                    <p class="text-gray-600 mb-4">Sécurité alimentaire, projets agricoles innovants et initiatives de développement rural durable.</p>
+                    <a href="#agriculture" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Société -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Société</h3>
+                    <p class="text-gray-600 mb-4">Éducation, santé, faits divers et questions sociales qui touchent la population du Lualaba.</p>
+                    <a href="#societe" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Culture & Tourisme -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-monument"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Culture & Tourisme</h3>
+                    <p class="text-gray-600 mb-4">Promotion des richesses culturelles et touristiques du Lualaba, patrimoine et traditions locales.</p>
+                    <a href="#culture" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <!-- Sports -->
+                <div class="rubrique-card fade-in">
+                    <div class="rubrique-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Sports</h3>
+                    <p class="text-gray-600 mb-4">Actualités sportives locales et nationales, résultats, compétitions et portraits d'athlètes.</p>
+                    <a href="#sports" class="text-indigo-600 font-medium flex items-center justify-center group">
+                        Explorer
+                        <i class="ml-1 fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Articles Récents -->
+    <section id="actualites" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-gray-800">Articles Récents</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 -->
+                <!-- Article 1 - Politique -->
                 <article class="bg-white rounded-xl overflow-hidden card-hover fade-in">
                     <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 relative overflow-hidden">
-                        <span class="absolute top-4 left-4 article-category category-economy">Économie</span>
+                        <span class="absolute top-4 left-4 article-category category-politics">Politique</span>
                         <div class="absolute bottom-4 left-4 text-white">
                             <span class="bg-black/30 px-2 py-1 rounded text-sm backdrop-blur-sm">Lecture 12 min</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full"></div>
-                        <div class="absolute -top-5 -left-5 w-24 h-24 bg-white/5 rounded-full"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">L'impact de la nouvelle loi sur l'exportation du cobalt</h3>
-                        <p class="text-gray-600 mb-4">Analyse approfondie des répercussions économiques et sociales des nouvelles régulations minières au Lualaba.</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Réforme provinciale : quels impacts pour le Lualaba ?</h3>
+                        <p class="text-gray-600 mb-4">Analyse des nouvelles compétences transférées aux provinces et leur mise en œuvre dans le Lualaba.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-gray-500">15 Nov 2023</span>
                             <a href="#" class="text-indigo-600 font-medium flex items-center group">
@@ -911,20 +970,18 @@
                     </div>
                 </article>
                 
-                <!-- Article 2 -->
+                <!-- Article 2 - Mines & Économie -->
                 <article class="bg-white rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-600 relative overflow-hidden">
-                        <span class="absolute top-4 left-4 article-category category-culture">Culture & Tourisme</span>
+                    <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-600 relative overflow-hidden">
+                        <span class="absolute top-4 left-4 article-category category-economy">Mines & Économie</span>
                         <div class="absolute bottom-4 left-4 text-white">
                             <span class="bg-black/30 px-2 py-1 rounded text-sm backdrop-blur-sm">Lecture 8 min</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full"></div>
-                        <div class="absolute -top-5 -left-5 w-24 h-24 bg-white/5 rounded-full"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Découvrez le Parc National de Upemba</h3>
-                        <p class="text-gray-600 mb-4">Reportage exclusif sur la faune, la flore et les efforts de conservation dans la région du Lualaba.</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Nouveau partenariat pour la transformation locale du cobalt</h3>
+                        <p class="text-gray-600 mb-4">Signature d'un accord historique pour la création d'unités de transformation dans la province.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-gray-500">12 Nov 2023</span>
                             <a href="#" class="text-indigo-600 font-medium flex items-center group">
@@ -935,20 +992,18 @@
                     </div>
                 </article>
                 
-                <!-- Article 3 -->
+                <!-- Article 3 - Agriculture -->
                 <article class="bg-white rounded-xl overflow-hidden card-hover fade-in">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 relative overflow-hidden">
-                        <span class="absolute top-4 left-4 article-category category-politics">Politique</span>
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-600 relative overflow-hidden">
+                        <span class="absolute top-4 left-4 article-category category-agriculture">Agriculture</span>
                         <div class="absolute bottom-4 left-4 text-white">
                             <span class="bg-black/30 px-2 py-1 rounded text-sm backdrop-blur-sm">Lecture 10 min</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full"></div>
-                        <div class="absolute -top-5 -left-5 w-24 h-24 bg-white/5 rounded-full"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">Bilan des 100 jours de l'administration provinciale</h3>
-                        <p class="text-gray-600 mb-4">Décryptage des promesses tenues et des chantiers encore ouverts dans la province du Lualaba.</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Révolution agricole dans le Lualaba</h3>
+                        <p class="text-gray-600 mb-4">Reportage sur les nouvelles techniques qui transforment l'agriculture traditionnelle.</p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-gray-500">10 Nov 2023</span>
                             <a href="#" class="text-indigo-600 font-medium flex items-center group">
@@ -969,133 +1024,171 @@
         </div>
     </section>
 
-    <!-- Section Équipe -->
-    <section id="apropos" class="py-16 bg-white">
+    <!-- Section À Propos / Notre Mission -->
+    <section id="apropos" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title text-3xl font-bold text-gray-800">Notre Équipe d'Experts</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mb-12">Une équipe de journalistes et d'analystes expérimentés, spécialistes de la région du Lualaba et des enjeux économiques de la RDC.</p>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="team-member fade-in">
-                    <div class="team-photo">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800">Jean Kabasele</h3>
-                    <p class="text-gray-600">Rédacteur en Chef</p>
-                    <p class="text-sm text-gray-500 mt-2">15 ans d'expérience en journalisme économique</p>
-                    <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member fade-in">
-                    <div class="team-photo">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800">Marie Lukunku</h3>
-                    <p class="text-gray-600">Éditrice Économie</p>
-                    <p class="text-sm text-gray-500 mt-2">Spécialiste des industries minières</p>
-                    <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member fade-in">
-                    <div class="team-photo">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800">David Mutombo</h3>
-                    <p class="text-gray-600">Photojournaliste</p>
-                    <p class="text-sm text-gray-500 mt-2">Reportages terrain dans tout le Lualaba</p>
-                    <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="section-title text-3xl font-bold text-gray-800">Notre Mission</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Lualaba Vision est né de la conviction que l'information de qualité est le pilier du développement. 
+                        Notre mission est de fournir une couverture médiatique indépendante, approfondie et objective de la 
+                        province du Lualaba et de la RDC dans son ensemble.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-100 p-2 rounded-lg">
+                                <i class="fas fa-eye text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Notre Vision</h4>
+                                <p class="text-gray-600">Devenir la référence médiatique pour l'information sur le Lualaba, en promouvant le développement et la bonne gouvernance.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-100 p-2 rounded-lg">
+                                <i class="fas fa-bullseye text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Nos Objectifs</h4>
+                                <p class="text-gray-600">Informer, éduquer, promouvoir le débat démocratique et contribuer au développement économique et social.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-100 p-2 rounded-lg">
+                                <i class="fas fa-shield-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Charte Éthique</h4>
+                                <p class="text-gray-600">Transparence, indépendance, rigueur journalistique et respect de la déontologie sont au cœur de notre action.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="team-member fade-in">
-                    <div class="team-photo">
-                        <i class="fas fa-pen-fancy"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800">Sarah Ilunga</h3>
-                    <p class="text-gray-600">Analyste Politique</p>
-                    <p class="text-sm text-gray-500 mt-2">Ancienne conseillère provinciale</p>
-                    <div class="flex justify-center space-x-3 mt-4">
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-indigo-500 hover:text-indigo-700 transition-colors duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Notre Équipe</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold">
+                                    JK
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Jean Kabasele</h4>
+                                    <p class="text-gray-600">Rédacteur en Chef - 15 ans d'expérience</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold">
+                                    ML
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Marie Lukunku</h4>
+                                    <p class="text-gray-600">Éditrice Économie - Spécialiste mines</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold">
+                                    DM
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">David Mutombo</h4>
+                                    <p class="text-gray-600">Photojournaliste - Reportages terrain</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Témoignages -->
-    <section class="py-16 bg-gray-50">
+    <!-- Section Services (Attaché de Presse) -->
+    <section id="services" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title text-3xl font-bold text-gray-800">Ils nous font confiance</h2>
+            <h2 class="section-title text-3xl font-bold text-gray-800">Services d'Attaché de Presse</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mb-12">Nous mettons notre expertise médiatique au service des structures et personnalités pour une communication efficace et stratégique.</p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                <div class="testimonial-card fade-in">
-                    <p class="text-gray-600 mb-6">"Lualaba Vision est devenu notre source d'information privilégiée pour suivre l'actualité économique de la région. Leurs analyses sont toujours pertinentes et bien documentées."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">PD</div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Pierre Dubois</h4>
-                            <p class="text-sm text-gray-500">Directeur, InvestCo International</p>
-                        </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card fade-in">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-newspaper"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Rédaction de Communiqués</h3>
+                    <p class="text-gray-600 mb-6">Rédaction professionnelle de communiqués de presse pour une diffusion optimale auprès des médias.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Format adapté aux médias</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Angles médiatiques pertinents</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Diffusion ciblée</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full">Demander un devis</a>
                 </div>
                 
-                <div class="testimonial-card fade-in">
-                    <p class="text-gray-600 mb-6">"La qualité du journalisme de Lualaba Vision est exceptionnelle. Leurs reportages sur le développement agricole nous ont été d'une grande utilité pour nos projets."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">AM</div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Amina Mwamba</h4>
-                            <p class="text-sm text-gray-500">Coordinatrice, ONG Développement Rural</p>
-                        </div>
+                <div class="service-card fade-in">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-microphone"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Relations Presse</h3>
+                    <p class="text-gray-600 mb-6">Gestion des relations avec les médias et organisation d'événements presse pour maximiser votre visibilité.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Base de données médias étendue</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Organisation de conférences</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Suivi des retombées presse</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full">Demander un devis</a>
                 </div>
                 
-                <div class="testimonial-card fade-in">
-                    <p class="text-gray-600 mb-6">"En tant qu'entrepreneur local, je compte sur Lualaba Vision pour me tenir informé des opportunités d'affaires et des évolutions réglementaires dans la province."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">KM</div>
-                        <div>
-                            <h4 class="font-bold text-gray-800">Koffi Mulumba</h4>
-                            <p class="text-sm text-gray-500">CEO, Groupe Mulumba</p>
-                        </div>
+                <div class="service-card fade-in">
+                    <div class="feature-icon mx-auto">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Stratégie de Communication</h3>
+                    <p class="text-gray-600 mb-6">Élaboration de stratégies de communication sur mesure pour renforcer votre image et votre notoriété.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Audit de communication</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Plan média personnalisé</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Conseil en image</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full">Demander un devis</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Section Contact -->
-    <section id="contact" class="py-16 bg-white">
+    <section id="contact" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="section-title text-3xl font-bold text-gray-800">Contactez-nous</h2>
             
             <div class="grid lg:grid-cols-2 gap-12 mt-12">
-                <div class="slide-in-left">
+                <div class="fade-in">
                     <h3 class="text-xl font-bold text-gray-800 mb-6">Travaillons ensemble</h3>
                     <p class="text-gray-600 mb-8">Vous avez un projet, une suggestion ou souhaitez collaborer avec notre équipe ? N'hésitez pas à nous contacter.</p>
                     
@@ -1130,10 +1223,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Suivez-nous sur les réseaux sociaux</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-all duration-300 hover:scale-110">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="slide-in-right">
-                    <form class="bg-gray-50 p-8 rounded-2xl shadow-lg">
+                <div class="fade-in">
+                    <form class="bg-white p-8 rounded-2xl shadow-lg">
                         <div class="grid md:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
@@ -1186,9 +1297,9 @@
                     <h4 class="text-lg font-semibold mb-4">Navigation</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#accueil" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Accueil</a></li>
-                        <li><a href="#actualites" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Actualités</a></li>
-                        <li><a href="#economie" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Économie</a></li>
-                        <li><a href="#analyses" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Analyses</a></li>
+                        <li><a href="#rubriques" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Rubriques</a></li>
+                        <li><a href="#apropos" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">À Propos</a></li>
+                        <li><a href="#services" class="hover:text-white transition-all duration-300 hover:translate-x-1 block">Services</a></li>
                     </ul>
                 </div>
                 
@@ -1203,23 +1314,18 @@
                 </div>
                 
                 <div class="fade-in">
-                    <h4 class="text-lg font-semibold mb-4">Suivez-nous</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-indigo-600 transition-all duration-300 hover:scale-110">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Inscrivez-vous pour recevoir nos dernières actualités</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-1 px-4 py-2 rounded-l-lg text-gray-800 focus:outline-none">
+                        <button class="bg-indigo-600 px-4 py-2 rounded-r-lg hover:bg-indigo-700 transition-colors duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
-                    <p class="text-gray-400 text-sm">© 2023 Lualaba Vision. Tous droits réservés.</p>
                 </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 Lualaba Vision. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -1271,7 +1377,7 @@
         }, observerOptions);
         
         // Observer les éléments à animer
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in').forEach(el => {
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
@@ -1336,7 +1442,7 @@
 
         // Animation des éléments de la première slide
         setTimeout(() => {
-            document.querySelectorAll('.fade-in, .zoom-in').forEach(el => {
+            document.querySelectorAll('.fade-in').forEach(el => {
                 if (el.closest('.carousel-slide.active')) {
                     el.classList.add('visible');
                 }
