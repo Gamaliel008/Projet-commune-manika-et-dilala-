@@ -1,201 +1,78 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos - Lualaba Vision</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-xl flex items-center justify-center">
+<footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="fade-in">
+                <div class="flex items-center space-x-3 mb-6 group">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
                         <span class="text-white font-bold text-xl">LV</span>
                     </div>
-                    <div>
-                        <span class="text-2xl font-extrabold text-indigo-700">Lualaba</span>
-                        <span class="text-2xl font-light text-gray-800">Vision</span>
-                    </div>
-                </a>
-
-                <nav class="hidden lg:flex items-center space-x-1">
-                    <a href="index.html" class="nav-link text-gray-700 hover:text-indigo-700">Accueil</a>
-                    <a href="rubriques.html" class="nav-link text-gray-700 hover:text-indigo-700">Rubriques</a>
-                    <a href="apropos.html" class="nav-link text-indigo-700 font-semibold">À Propos</a>
-                    <a href="services.html" class="nav-link text-gray-700 hover:text-indigo-700">Services</a>
-                    <a href="contact.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <!-- Page Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Page Header -->
-        <div class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">À Propos de Lualaba Vision</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Votre source d'information indépendante et premium sur le Lualaba et la RDC
-            </p>
-        </div>
-
-        <!-- Notre Histoire -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Notre Histoire</h2>
-            <div class="prose prose-lg text-gray-600">
-                <p class="mb-4">
-                    Fondé en 2020, Lualaba Vision est né de la conviction que l'information de qualité est le pilier du développement. 
-                    Dans une province aussi stratégique que le Lualaba, cœur économique de la RDC grâce à ses ressources minières, 
-                    nous avons identifié le besoin crucial d'un média indépendant, professionnel et tourné vers l'avenir.
-                </p>
-                <p class="mb-4">
-                    Notre équipe de journalistes et d'analystes travaille sans relâche pour fournir une couverture médiatique 
-                    approfondie et objective des enjeux qui façonnent l'avenir de notre province et de notre pays.
-                </p>
-            </div>
-        </div>
-
-        <!-- Notre Mission -->
-        <div class="grid md:grid-cols-2 gap-12 mb-16">
-            <div>
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">Notre Mission</h2>
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-indigo-100 p-3 rounded-lg">
-                            <i class="fas fa-eye text-indigo-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Notre Vision</h3>
-                            <p class="text-gray-600">Devenir la référence médiatique pour l'information sur le Lualaba, en promouvant le développement et la bonne gouvernance.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-indigo-100 p-3 rounded-lg">
-                            <i class="fas fa-bullseye text-indigo-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Nos Objectifs</h3>
-                            <p class="text-gray-600">Informer, éduquer, promouvoir le débat démocratique et contribuer au développement économique et social.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-indigo-100 p-3 rounded-lg">
-                            <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Notre Éthique</h3>
-                            <p class="text-gray-600">Transparence, indépendance, rigueur journalistique et respect de la déontologie sont au cœur de notre action.</p>
-                        </div>
+                    <div class="transition-all duration-300 group-hover:translate-x-1">
+                        <span class="text-2xl font-extrabold text-white">Lualaba</span>
+                        <span class="text-2xl font-light text-gray-300">Vision</span>
                     </div>
                 </div>
+                <p class="text-gray-400 text-lg mb-6">Votre source d'information indépendante pour la RDC et le Lualaba. Transparence et objectivité au cœur de notre mission.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
             </div>
-            <div class="bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl p-8 text-white">
-                <h3 class="text-2xl font-bold mb-6">Nos Valeurs</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle mr-3 text-green-300"></i>
-                        Indépendance éditoriale
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle mr-3 text-green-300"></i>
-                        Rigueur journalistique
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle mr-3 text-green-300"></i>
-                        Innovation permanente
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle mr-3 text-green-300"></i>
-                        Service public
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle mr-3 text-green-300"></i>
-                        Développement local
-                    </li>
+            
+            <div class="fade-in">
+                <h4 class="text-xl font-semibold mb-6 text-white">Navigation Rapide</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="index.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Accueil</a></li>
+                    <li><a href="rubriques.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Rubriques</a></li>
+                    <li><a href="apropos.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">À Propos</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Contact</a></li>
                 </ul>
             </div>
-        </div>
-
-        <!-- Notre Équipe -->
-        <div class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Notre Équipe</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Membre 1 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                        JK
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Jean Kabasele</h3>
-                    <p class="text-indigo-600 font-semibold mb-3">Rédacteur en Chef</p>
-                    <p class="text-gray-600 text-sm">15 ans d'expérience en journalisme politique et économique</p>
+            
+            <div class="fade-in">
+                <h4 class="text-xl font-semibold mb-6 text-white">Rubriques</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li><a href="politique.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Politique</a></li>
+                    <li><a href="mines-economie.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Mines & Économie</a></li>
+                    <li><a href="agriculture.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Agriculture</a></li>
+                    <li><a href="societe.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Société</a></li>
+                    <li><a href="culture-tourisme.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Culture & Tourisme</a></li>
+                    <li><a href="sports.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 block text-lg">Sports</a></li>
+                </ul>
+            </div>
+            
+            <div class="fade-in">
+                <h4 class="text-xl font-semibold mb-6 text-white">Newsletter</h4>
+                <p class="text-gray-400 text-lg mb-4">Restez informé de nos dernières actualités</p>
+                <div class="flex mb-4">
+                    <input type="email" placeholder="Votre email" class="flex-1 px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 px-6 py-3 rounded-r-lg hover:bg-indigo-700 transition-colors duration-300 font-semibold">
+                        S'abonner
+                    </button>
                 </div>
-
-                <!-- Membre 2 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                        ML
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Marie Lukunku</h3>
-                    <p class="text-indigo-600 font-semibold mb-3">Éditrice Économie</p>
-                    <p class="text-gray-600 text-sm">Spécialiste des questions minières et du développement</p>
-                </div>
-
-                <!-- Membre 3 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                        DM
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">David Mutombo</h3>
-                    <p class="text-indigo-600 font-semibold mb-3">Photojournaliste</p>
-                    <p class="text-gray-600 text-sm">Reportages terrain et couverture événementielle</p>
-                </div>
-
-                <!-- Membre 4 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                        SM
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Sarah Mwamba</h3>
-                    <p class="text-indigo-600 font-semibold mb-3">Rédactrice Société</p>
-                    <p class="text-gray-600 text-sm">Spécialiste des questions sociales et éducatives</p>
-                </div>
+                <p class="text-gray-500 text-sm">En vous abonnant, vous acceptez notre politique de confidentialité</p>
             </div>
         </div>
-
-        <!-- Chiffres Clés -->
-        <div class="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white text-center">
-            <h2 class="text-3xl font-bold mb-8">Lualaba Vision en Chiffres</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-4xl font-bold mb-2">50K+</div>
-                    <div class="opacity-90">Lecteurs mensuels</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">500+</div>
-                    <div class="opacity-90">Articles publiés</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">15+</div>
-                    <div class="opacity-90">Journalistes</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">3</div>
-                    <div class="opacity-90">Ans d'existence</div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-lg mb-4 md:mb-0">© 2023 Lualaba Vision. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-lg">Mentions légales</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-lg">Confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-lg">Cookies</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2023 Lualaba Vision. Tous droits réservés.</p>
-        </div>
-    </footer>
-</body>
-</html>
+</footer>
