@@ -199,34 +199,6 @@
             margin-bottom: 1rem;
         }
         
-        .pricing-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-card.popular {
-            border: 2px solid var(--accent);
-            transform: scale(1.05);
-        }
-        
-        .pricing-card.popular::before {
-            content: 'POPULAIRE';
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--accent);
-            color: white;
-            padding: 5px 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transform: rotate(45deg);
-        }
-        
         .btn-primary {
             background: var(--primary);
             color: white;
@@ -311,6 +283,80 @@
         .back-to-top {
             display: none;
         }
+
+        /* Styles pour le carrousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+
+        .carousel-arrow.next {
+            right: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         
         @media (max-width: 768px) {
             .hero-title {
@@ -323,6 +369,12 @@
             
             .stat-number {
                 font-size: 2rem;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -386,52 +438,164 @@
         </div>
     </header>
 
-    <!-- Section Hero -->
+    <!-- Section Hero avec Carrousel -->
     <section id="accueil" class="hero-gradient text-white py-20 relative overflow-hidden">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                        L'information <span class="text-yellow-300">premium</span> sur le Lualaba et la RDC
-                    </h1>
-                    <p class="text-xl mb-8 opacity-90">
-                        Décryptage exclusif, analyses approfondies et reportages terrain sur l'économie, la politique et le développement de la région la plus stratégique de la RDC.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#abonnement" class="btn-secondary text-center">S'abonner à notre édition premium</a>
-                        <a href="#actualites" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300">Lire les actualités</a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                        <h3 class="text-2xl font-bold mb-4">À la une cette semaine</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-yellow-500 text-indigo-900 font-bold text-sm px-2 py-1 rounded mt-1">EXCLUSIF</div>
-                                <div>
-                                    <h4 class="font-semibold">Nouveau code minier : opportunités et défis pour le Lualaba</h4>
-                                    <p class="text-sm opacity-80 mt-1">Analyse exclusive des impacts économiques</p>
-                                </div>
+            <div class="carousel-container">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                                L'information <span class="text-yellow-300">premium</span> sur le Lualaba et la RDC
+                            </h1>
+                            <p class="text-xl mb-8 opacity-90">
+                                Décryptage exclusif, analyses approfondies et reportages terrain sur l'économie, la politique et le développement de la région la plus stratégique de la RDC.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="#abonnement" class="btn-secondary text-center">S'abonner à notre édition premium</a>
+                                <a href="#actualites" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300">Lire les actualités</a>
                             </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-red-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">URGENT</div>
-                                <div>
-                                    <h4 class="font-semibold">Investissement chinois de 2 milliards $ dans les infrastructures</h4>
-                                    <p class="text-sm opacity-80 mt-1">Signature prévue le 15 novembre</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <div class="bg-green-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">REPORTAGE</div>
-                                <div>
-                                    <h4 class="font-semibold">L'agriculture, nouvel eldorado du Lualaba</h4>
-                                    <p class="text-sm opacity-80 mt-1">Visite des nouvelles zones de production</p>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h3 class="text-2xl font-bold mb-4">À la une cette semaine</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-yellow-500 text-indigo-900 font-bold text-sm px-2 py-1 rounded mt-1">EXCLUSIF</div>
+                                        <div>
+                                            <h4 class="font-semibold">Nouveau code minier : opportunités et défis pour le Lualaba</h4>
+                                            <p class="text-sm opacity-80 mt-1">Analyse exclusive des impacts économiques</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">URGENT</div>
+                                        <div>
+                                            <h4 class="font-semibold">Investissement chinois de 2 milliards $ dans les infrastructures</h4>
+                                            <p class="text-sm opacity-80 mt-1">Signature prévue le 15 novembre</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-green-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">REPORTAGE</div>
+                                        <div>
+                                            <h4 class="font-semibold">L'agriculture, nouvel eldorado du Lualaba</h4>
+                                            <p class="text-sm opacity-80 mt-1">Visite des nouvelles zones de production</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                                L'économie du <span class="text-yellow-300">cobalt</span> décryptée
+                            </h1>
+                            <p class="text-xl mb-8 opacity-90">
+                                Analyses exclusives sur les enjeux miniers, les investissements étrangers et l'impact sur le développement local du Lualaba.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="#analyses" class="btn-secondary text-center">Lire nos analyses</a>
+                                <a href="#contact" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300">Nous contacter</a>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h3 class="text-2xl font-bold mb-4">Dernières analyses</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-blue-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">RAPPORT</div>
+                                        <div>
+                                            <h4 class="font-semibold">Production de cobalt : tendances 2024</h4>
+                                            <p class="text-sm opacity-80 mt-1">Projections et analyses marché</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-purple-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">ÉTUDE</div>
+                                        <div>
+                                            <h4 class="font-semibold">Impact des nouvelles régulations minières</h4>
+                                            <p class="text-sm opacity-80 mt-1">Analyse complète des réformes</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-orange-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">INVESTISSEMENT</div>
+                                        <div>
+                                            <h4 class="font-semibold">Opportunités dans l'agriculture locale</h4>
+                                            <p class="text-sm opacity-80 mt-1">Secteurs porteurs identifiés</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                                Le développement <span class="text-yellow-300">durable</span> au cœur
+                            </h1>
+                            <p class="text-xl mb-8 opacity-90">
+                                Reportages exclusifs sur les initiatives de développement durable, la protection de l'environnement et les projets sociaux dans le Lualaba.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="#actualites" class="btn-secondary text-center">Voir nos reportages</a>
+                                <a href="#apropos" class="bg-white text-indigo-700 font-semibold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300">Notre mission</a>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h3 class="text-2xl font-bold mb-4">Initiatives locales</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-green-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">ENVIRONNEMENT</div>
+                                        <div>
+                                            <h4 class="font-semibold">Reforestation dans le Haut-Katanga</h4>
+                                            <p class="text-sm opacity-80 mt-1">10.000 arbres plantés cette année</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-teal-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">SOCIAL</div>
+                                        <div>
+                                            <h4 class="font-semibold">Nouveaux centres de formation professionnelle</h4>
+                                            <p class="text-sm opacity-80 mt-1">500 jeunes formés en 2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-indigo-500 text-white font-bold text-sm px-2 py-1 rounded mt-1">INNOVATION</div>
+                                        <div>
+                                            <h4 class="font-semibold">Startups technologiques émergentes</h4>
+                                            <p class="text-sm opacity-80 mt-1">Écosystème en pleine croissance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flèches de navigation -->
+                <button class="carousel-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Points indicateurs -->
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
                 </div>
             </div>
         </div>
@@ -625,81 +789,6 @@
         </div>
     </section>
 
-    <!-- Section Abonnement -->
-    <section id="abonnement" class="py-16 bg-indigo-700 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">Accédez à notre contenu premium</h2>
-                <p class="text-xl opacity-90 mb-8">Abonnez-vous pour bénéficier d'analyses exclusives, de reportages approfondis et d'accès prioritaire à nos événements.</p>
-                
-                <div class="grid md:grid-cols-3 gap-8 mt-12">
-                    <div class="pricing-card">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Basique</h3>
-                        <div class="text-3xl font-bold text-gray-800 mb-2">Gratuit</div>
-                        <p class="text-gray-600 mb-6">Accès limité aux articles</p>
-                        <ul class="text-gray-600 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>5 articles/mois</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Newsletter hebdomadaire</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-times text-gray-400 mr-2"></i>
-                                <span>Analyses exclusives</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="btn-primary w-full">S'inscrire</a>
-                    </div>
-                    
-                    <div class="pricing-card popular">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Premium</h3>
-                        <div class="text-3xl font-bold text-gray-800 mb-2">$9.99<span class="text-lg font-normal">/mois</span></div>
-                        <p class="text-gray-600 mb-6">Accès complet à tous les contenus</p>
-                        <ul class="text-gray-600 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Articles illimités</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Analyses exclusives</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Accès aux événements</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="btn-secondary w-full">S'abonner</a>
-                    </div>
-                    
-                    <div class="pricing-card">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Entreprise</h3>
-                        <div class="text-3xl font-bold text-gray-800 mb-2">$49.99<span class="text-lg font-normal">/mois</span></div>
-                        <p class="text-gray-600 mb-6">Solution complète pour les organisations</p>
-                        <ul class="text-gray-600 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Accès multi-utilisateurs</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Rapports personnalisés</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-500 mr-2"></i>
-                                <span>Consultation avec nos experts</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="btn-primary w-full">Nous contacter</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Section Contact -->
     <section id="contact" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -880,12 +969,71 @@
         }, observerOptions);
         
         // Observer les éléments à animer
-        document.querySelectorAll('.stat-card, .card-hover, .testimonial-card, .pricing-card, .team-member').forEach(el => {
+        document.querySelectorAll('.stat-card, .card-hover, .testimonial-card, .team-member').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
         });
+
+        // Carrousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevButton = document.querySelector('.carousel-arrow.prev');
+        const nextButton = document.querySelector('.carousel-arrow.next');
+
+        function showSlide(n) {
+            // Masquer toutes les slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Ajuster l'index si nécessaire
+            if (n >= slides.length) currentSlide = 0;
+            if (n < 0) currentSlide = slides.length - 1;
+            
+            // Afficher la slide courante
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Événements pour les flèches
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        // Événements pour les points
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Défilement automatique
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Arrêter le défilement automatique au survol
+        const carousel = document.querySelector('.carousel-container');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Initialisation
+        showSlide(currentSlide);
     </script>
 </body>
 </html>
