@@ -1,274 +1,833 @@
-<main id="main-content">
-        <section id="hero" class="relative py-12 md:py-20 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture & Développement - Lualaba Vision</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .article-category {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .article-category:hover {
+            transform: scale(1.05);
+        }
+        
+        .category-agriculture { 
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0); 
+            color: #166534; 
+            box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
+        }
+        
+        .category-innovation { 
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
+            color: #1e40af; 
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+        
+        .category-development { 
+            background: linear-gradient(135deg, #fef3c7, #fde68a); 
+            color: #92400e; 
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-accent:hover::before {
+            left: 100%;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            background: #10b981;
+            top: 60%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+        
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.4);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-action:hover {
+            transform: scale(1.1) rotate(5deg);
+            animation: none;
+        }
+        
+        .back-to-top {
+            display: none;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.4s ease;
+        }
+        
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+        }
+        
+        .newsletter-card {
+            background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .agriculture-bg {
+            background: linear-gradient(135deg, #166534 0%, #15803d 50%, #16a34a 100%);
+        }
+        
+        .development-bg {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0ea5e9 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-leaf text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">Lualaba<span class="text-blue-600">Vision</span></span>
+                </div>
                 
-                <div class="floating-shape shape-1"></div>
-                <div class="floating-shape shape-2"></div>
-                <div class="floating-shape shape-3"></div>
-
-                <div class="grid lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5 fade-in slide-in-left">
-                        <span class="text-sm font-semibold uppercase tracking-widest text-indigo-600 mb-3 block">
-                            Mwangeji Média | RDC & Lualaba
-                        </span>
-                        <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight hero-title">
-                            Actualités Premium, <span class="hero-gradient text-transparent bg-clip-text">Analyses Profondes</span>.
-                        </h1>
-                        <p class="text-xl text-gray-600 mb-8">
-                            Votre source d'information indépendante pour décrypter l'économie, la politique et le développement en **RDC**, avec un focus particulier sur le **Lualaba**.
-                        </p>
-                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <a href="#articles-populaires" class="btn-primary">
-                                Voir les Dernières Nouvelles <i class="ml-2 fas fa-arrow-right"></i>
-                            </a>
-                            <a href="apropos.html" class="btn-secondary">
-                                Qui Sommes-Nous ?
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 fade-in zoom-in" id="main-carousel">
-                        <div class="carousel-container shadow-2xl">
-                            <div class="carousel-slide active" data-index="0">
-                                <div class="relative">
-                                    <div class="article-image h-[450px] bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1000x700/?mining,congo');">
-                                        <div class="article-overlay flex flex-col justify-end h-full">
-                                            <span class="article-category category-economy">Économie & Mines</span>
-                                            <h2 class="text-3xl font-bold mb-3 leading-snug">
-                                                Le Cobalt du Lualaba : Un Trésor au Cœur de la Transition Énergétique Mondiale.
-                                            </h2>
-                                            <p class="text-sm text-gray-200">
-                                                Analyse exclusive des impacts du boom minier sur les communautés locales et l'économie nationale.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide" data-index="1">
-                                <div class="relative">
-                                    <div class="article-image h-[450px] bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1000x700/?politics,kinshasa');">
-                                        <div class="article-overlay flex flex-col justify-end h-full">
-                                            <span class="article-category category-politics">Politique RDC</span>
-                                            <h2 class="text-3xl font-bold mb-3 leading-snug">
-                                                Réforme Électorale : Les Enjeux Cruciaux à l'Approche des Scrutins.
-                                            </h2>
-                                            <p class="text-sm text-gray-200">
-                                                Décryptage des tensions et des avancées dans le processus de refonte du cadre légal électoral.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="carousel-slide" data-index="2">
-                                <div class="relative">
-                                    <div class="article-image h-[450px] bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/1000x700/?farming,africa');">
-                                        <div class="article-overlay flex flex-col justify-end h-full">
-                                            <span class="article-category category-agriculture">Agriculture</span>
-                                            <h2 class="text-3xl font-bold mb-3 leading-snug">
-                                                Sécurité Alimentaire : L'essor des Coopératives Agricoles à Kolwezi.
-                                            </h2>
-                                            <p class="text-sm text-gray-200">
-                                                Comment les initiatives locales transforment le secteur et réduisent la dépendance aux importations.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button class="carousel-arrow prev" aria-label="Article Précédent"><i class="fas fa-chevron-left"></i></button>
-                            <button class="carousel-arrow next" aria-label="Article Suivant"><i class="fas fa-chevron-right"></i></button>
-
-                        </div>
-                        <div class="carousel-dots">
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="max-w-7xl mx-auto border-gray-200" />
-
-        <section id="stats" class="py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-title text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 fade-in">
-                    Le Lualaba en Chiffres <span class="text-indigo-600">Clés</span>
-                </h2>
-
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="stat-card fade-in zoom-in" style="transition-delay: 0.1s;">
-                        <i class="fas fa-chart-line text-4xl text-indigo-500 mb-3"></i>
-                        <div class="stat-number" data-target="15">0%</div>
-                        <p class="text-lg font-medium text-gray-600">Croissance Économique (2024)</p>
-                    </div>
-
-                    <div class="stat-card fade-in zoom-in" style="transition-delay: 0.2s;">
-                        <i class="fas fa-truck-monster text-4xl text-yellow-500 mb-3"></i>
-                        <div class="stat-number" data-target="70">0%</div>
-                        <p class="text-lg font-medium text-gray-600">Production Nationale de Cobalt</p>
-                    </div>
-
-                    <div class="stat-card fade-in zoom-in" style="transition-delay: 0.3s;">
-                        <i class="fas fa-tractor text-4xl text-green-500 mb-3"></i>
-                        <div class="stat-number" data-target="50">0</div>
-                        <p class="text-lg font-medium text-gray-600">Projets Agricoles Financés</p>
-                    </div>
-
-                    <div class="stat-card fade-in zoom-in" style="transition-delay: 0.4s;">
-                        <i class="fas fa-users text-4xl text-pink-500 mb-3"></i>
-                        <div class="stat-number" data-target="120">0</div>
-                        <p class="text-lg font-medium text-gray-600">Articles Publiés / Mois</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="articles-populaires" class="bg-white py-16 md:py-24 border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-title text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 fade-in">
-                    À la Une <span class="text-indigo-600">Actuellement</span>
-                </h2>
-
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <a href="#" class="popular-article lg:col-span-2 card-hover fade-in slide-in-left">
-                        <div class="relative bg-white shadow-xl rounded-2xl">
-                            <div class="article-image h-96" style="background-image: url('https://source.unsplash.com/random/1200x800/?kolwezi,city');">
-                                <div class="article-overlay flex flex-col justify-end h-full">
-                                    <span class="article-category category-society">Société</span>
-                                    <h3 class="text-4xl font-bold mb-3 leading-tight">
-                                        Kolwezi 2030 : Le Plan de Modernisation Urbaine pour un Cadre de Vie Amélioré.
-                                    </h3>
-                                    <p class="text-md text-gray-200">
-                                        Interview exclusive avec l'architecte en chef du projet.
-                                    </p>
-                                    <div class="mt-4 flex items-center text-sm text-gray-300">
-                                        <i class="fas fa-calendar mr-2"></i> 25 Septembre 2025
-                                        <span class="mx-3">•</span>
-                                        <i class="fas fa-eye mr-2"></i> 15.4k Vues
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <nav class="hidden md:flex space-x-1">
+                    <a href="#accueil" class="nav-link text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-home mr-2"></i>Accueil
                     </a>
-
-                    <div class="space-y-8">
-                        <a href="#" class="popular-article card-hover fade-in slide-in-right">
-                            <div class="flex flex-col bg-white shadow-xl rounded-2xl">
-                                <div class="article-image h-52 rounded-t-2xl" style="background-image: url('https://source.unsplash.com/random/600x400/?sports,basketball');">
-                                    <div class="article-overlay p-4">
-                                        <span class="article-category category-sports">Sports</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold mb-2 leading-snug text-gray-900">
-                                        Succès RDC : La Jeune Équipe de Basketball Qualifiée pour les Jeux.
-                                    </h3>
-                                    <div class="flex items-center text-sm text-gray-500">
-                                        <i class="fas fa-calendar mr-2"></i> 24 Septembre 2025
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <a href="#" class="popular-article card-hover fade-in slide-in-right" style="transition-delay: 0.2s;">
-                            <div class="flex flex-col bg-white shadow-xl rounded-2xl">
-                                <div class="article-image h-52 rounded-t-2xl" style="background-image: url('https://source.unsplash.com/random/600x400/?tourism,park');">
-                                    <div class="article-overlay p-4">
-                                        <span class="article-category category-culture">Tourisme</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold mb-2 leading-snug text-gray-900">
-                                        Découverte : Les Mystères du Parc National de l'Upemba.
-                                    </h3>
-                                    <div class="flex items-center text-sm text-gray-500">
-                                        <i class="fas fa-calendar mr-2"></i> 22 Septembre 2025
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                    <a href="#agriculture" class="nav-link text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-seedling mr-2"></i>Agriculture
+                    </a>
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-arrow-left mr-2"></i>Retour
+                    </a>
+                </nav>
                 
-                <div class="text-center mt-16 fade-in">
-                    <a href="rubriques.html" class="btn-primary py-3 px-6 text-lg">
-                        Toutes les Rubriques <i class="ml-2 fas fa-newspaper"></i>
-                    </a>
-                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <section id="testimonials" class="py-16 md:py-24 border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="section-title text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center fade-in">
-                    Ce que nos <span class="text-indigo-600">Lecteurs Disent</span>
-                </h2>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="testimonial-card fade-in slide-in-left">
-                        <p class="text-lg text-gray-700 mb-6 relative z-10">
-                            "Mwangeji Média est ma référence quotidienne. Les analyses économiques sur le secteur minier sont d'une précision inégalée. Indispensable pour tout investisseur en RDC."
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600 mr-4">JB</div>
-                            <div>
-                                <p class="font-bold text-gray-900">Jean-Bosco K.</p>
-                                <p class="text-sm text-gray-500">Entrepreneur, Lubumbashi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card fade-in zoom-in" style="transition-delay: 0.2s;">
-                        <p class="text-lg text-gray-700 mb-6 relative z-10">
-                            "Enfin un média qui ne se contente pas des gros titres ! L'attention portée au développement agricole du Lualaba montre un réel engagement pour les sujets de fond."
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center font-bold text-yellow-600 mr-4">EL</div>
-                            <div>
-                                <p class="font-bold text-gray-900">Esther L.</p>
-                                <p class="text-sm text-gray-500">Agronome, Kolwezi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card fade-in slide-in-right" style="transition-delay: 0.4s;">
-                        <p class="text-lg text-gray-700 mb-6 relative z-10">
-                            "Le service d'attaché de presse a propulsé la visibilité de notre organisation. Professionnalisme, réactivité et réseau étendu : un partenaire de choix."
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600 mr-4">SA</div>
-                            <div>
-                                <p class="font-bold text-gray-900">Société Alpha</p>
-                                <p class="text-sm text-gray-500">Directeur Communication</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-indigo-600 py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
-                    Ne Manquez Aucune <span class="text-yellow-300">Analyse Exclusive</span> !
-                </h2>
-                <p class="text-xl text-indigo-200 mb-10">
-                    Abonnez-vous à notre newsletter premium pour recevoir les rapports économiques et politiques directement dans votre boîte mail.
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient text-white relative overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        
+        <div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Agriculture & Développement
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    Cultivons l'avenir, développons notre région
                 </p>
-
-                <form class="max-w-xl mx-auto flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <input 
-                        type="email" 
-                        placeholder="Votre adresse e-mail professionnelle" 
-                        class="flex-grow p-4 rounded-xl text-gray-900 focus:ring-4 focus:ring-yellow-300 focus:border-yellow-300 transition-all duration-300 placeholder:text-gray-500"
-                        required
-                    />
-                    <button type="submit" class="btn-secondary py-4 px-8">
-                        S'Abonner <i class="ml-2 fas fa-paper-plane"></i>
-                    </button>
-                </form>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#agriculture" class="btn-primary">
+                        <i class="fas fa-seedling mr-2"></i>Découvrir l'agriculture
+                    </a>
+                    <a href="#developpement" class="btn-accent">
+                        <i class="fas fa-chart-line mr-2"></i>Voir le développement
+                    </a>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- Agriculture Section -->
+    <section id="agriculture" class="py-20 agriculture-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">L'Agriculture en Lualaba</h2>
+                <p class="text-xl max-w-3xl mx-auto opacity-90">
+                    Découvrez les richesses agricoles de notre région et les initiatives qui la font rayonner
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="stat-card text-center fade-in">
+                    <div class="feature-icon mx-auto mb-6">
+                        <i class="fas fa-wheat-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Cultures Diversifiées</h3>
+                    <p class="text-gray-700 mb-4">
+                        La Lualaba cultive une variété de produits agricoles grâce à ses sols fertiles et son climat favorable.
+                    </p>
+                    <div class="stat-number">15+</div>
+                    <p class="text-gray-600">Types de cultures</p>
+                </div>
+                
+                <div class="stat-card text-center fade-in">
+                    <div class="feature-icon mx-auto mb-6">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Modernisation</h3>
+                    <p class="text-gray-700 mb-4">
+                        Adoption de techniques agricoles modernes pour améliorer les rendements et la durabilité.
+                    </p>
+                    <div class="stat-number">85%</div>
+                    <p class="text-gray-600">Modernisation</p>
+                </div>
+                
+                <div class="stat-card text-center fade-in">
+                    <div class="feature-icon mx-auto mb-6">
+                        <i class="fas fa-hand-holding-seedling"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Agriculture Durable</h3>
+                    <p class="text-gray-700 mb-4">
+                        Pratiques respectueuses de l'environnement pour préserver les ressources pour les générations futures.
+                    </p>
+                    <div class="stat-number">92%</div>
+                    <p class="text-gray-600">Pratiques durables</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Section -->
+    <section id="developpement" class="py-20 development-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Développement Régional</h2>
+                <p class="text-xl max-w-3xl mx-auto opacity-90">
+                    Les projets de développement qui transforment la Lualaba en une région prospère
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h3 class="text-3xl font-bold mb-6">Infrastructure et Connectivité</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Des projets ambitieux pour améliorer les infrastructures et connecter les communautés.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <span>Routes et voies de communication modernisées</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <span>Accès à l'électricité pour 95% des foyers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <span>Connexion internet haut débit dans les zones rurales</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="slide-in-right">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+                            <i class="fas fa-city text-gray-400 text-6xl"></i>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-blue-400 p-6 rounded-xl shadow-xl">
+                            <div class="text-3xl font-bold">+45%</div>
+                            <div class="text-sm">Croissance économique</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Actualités & Projets</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Découvrez les dernières initiatives et projets en cours dans la région
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-seedling text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="article-category category-agriculture mb-4">Agriculture</span>
+                        <h3 class="text-xl font-bold mb-3">Nouvelle coopérative agricole</h3>
+                        <p class="text-gray-600 mb-4">
+                            Lancement d'une coopérative pour soutenir les petits agriculteurs locaux.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">12 Juin 2025</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+                                Lire plus <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-school text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="article-category category-development mb-4">Éducation</span>
+                        <h3 class="text-xl font-bold mb-3">Nouvel établissement scolaire</h3>
+                        <p class="text-gray-600 mb-4">
+                            Inauguration d'un centre de formation technique pour les jeunes.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">5 Juin 2025</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+                                Lire plus <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-amber-400 to-amber-600 flex items-center justify-center">
+                        <i class="fas fa-hospital text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="article-category category-development mb-4">Santé</span>
+                        <h3 class="text-xl font-bold mb-3">Centre de santé moderne</h3>
+                        <p class="text-gray-600 mb-4">
+                            Ouverture d'un nouveau centre de santé équipé de technologies modernes.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">28 Mai 2025</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+                                Lire plus <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 flex items-center justify-center">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">Lualaba<span class="text-blue-400">Vision</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Promouvoir le développement durable de la région Lualaba à travers l'agriculture et l'innovation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Liens Rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#accueil" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#agriculture" class="text-gray-400 hover:text-white transition">Agriculture</a></li>
+                        <li><a href="#developpement" class="text-gray-400 hover:text-white transition">Développement</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Page d'accueil</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Conseil agricole</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Formation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Investissement</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Soutien aux PME</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>Kolwezi, Lualaba, RDC</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-blue-400"></i>
+                            <span>+243 999 999 999</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <span>info@lualabavision.cd</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Lualaba Vision. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <a href="index.html" class="floating-action">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Add animation to feature icons
+        document.querySelectorAll('.feature-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'rotate(15deg) scale(1.15)';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = 'rotate(0deg) scale(1)';
+            });
+        });
+
+        // Add animation to cards on hover
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Counter animation for stats
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.innerText);
+            let count = 0;
+            const duration = 2000; // ms
+            const increment = target / (duration / 16);
+            
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    stat.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 16);
+                } else {
+                    stat.innerText = target;
+                }
+            };
+            
+            // Start counting when element is in view
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCount();
+                        statObserver.unobserve(stat);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statObserver.observe(stat);
+        });
+    </script>
+</body>
+</html>
